@@ -1,0 +1,57 @@
+---
+title: "Scatterplots"
+lightbox: true
+format:
+  html:
+    code-tools: 
+      source: true
+      toggle: true
+    code-fold: true
+---
+
+```{r}
+#| output: false
+
+source("global.R")
+```
+
+Exploring scatterplots
+
+The penguins data also has four continuous variables, making six unique scatterplots possible!
+
+```{r}
+penguins %>%
+  dplyr::select(body_mass_g, ends_with("_mm")) %>% 
+  glimpse()
+```
+
+```{r}
+# Scatterplot example 1: penguin flipper length versus body mass
+ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(aes(color = species, 
+                 shape = species),
+             size = 2) +
+  scale_color_manual(values = c("darkorange","darkorchid","cyan4")) 
+```
+
+```{r}
+
+# Scatterplot example 2: penguin bill length versus bill depth
+ggplot(data = penguins, aes(x = bill_length_mm, y = bill_depth_mm)) +
+  geom_point(aes(color = species, 
+                 shape = species),
+             size = 2)  +
+  scale_color_manual(values = c("darkorange","darkorchid","cyan4"))
+```
+
+You can add color and/or shape aesthetics in ggplot2 to layer in factor levels like we did above. With three factor variables to work with, you can add another factor layer with facets, like the plot below.
+
+```{r}
+ggplot(penguins, aes(x = flipper_length_mm,
+                     y = body_mass_g)) +
+  geom_point(aes(color = sex)) +
+  scale_color_manual(values = c("darkorange","cyan4"), 
+                     na.translate = FALSE) +
+  facet_wrap(~species)
+```
+

@@ -1,0 +1,41 @@
+project:
+  type: website
+
+website:
+  title: "Palmer Penguins"
+  page-navigation: true
+  page-footer:
+      center: |
+        ![](palmerpenguins.png){width=20%}
+      right: Palmer Penguins adapted by Ann Wells
+  navbar:
+    background:  "#ceb6db" #"#d1dbe8" #"#013377"
+    foreground: "#350d56"
+    logo: JAX_LOGO_no_words.png
+    left:
+      - text: "Home"
+        file: index.qmd
+      - text: "Who are the penguins?"
+        href: 01_who_are_the_penguins.qmd
+      - text: "Exploring Factors"
+        href: 02_Factors.qmd
+      - text: "Exploring Scatterplots"
+        href: 03_scatterplots.qmd
+      - text: "Exploring Correlations"
+        href: 04_correlations.qmd
+      - text: "Exploring Distributions"
+        href: 05_distributions.qmd
+      - text: "References"
+        href: 10_references.qmd
+
+
+format:
+  html:
+    theme: cerulean
+    highlight-style: textmate
+    css: styles.css
+    toc: true
+    
+
+editor: visual
+

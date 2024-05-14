@@ -1,0 +1,28 @@
+---
+title: "Correlations"
+lightbox: true
+format:
+  html:
+    code-tools: 
+      source: true
+      toggle: true
+    code-fold: true
+---
+
+```{r}
+#| output: false
+
+source("global.R")
+```
+
+Exploring correlations
+
+Also see vignette("pca") for an example principal component analysis.
+
+```{r}
+penguins %>%
+  select(species, body_mass_g, ends_with("_mm")) %>% 
+  GGally::ggpairs(aes(color = species)) +
+  scale_colour_manual(values = c("darkorange","purple","cyan4")) +
+  scale_fill_manual(values = c("darkorange","purple","cyan4"))
+```

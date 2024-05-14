@@ -1,0 +1,58 @@
+---
+title: "Factors"
+lightbox: true
+format:
+  html:
+    code-tools: 
+      source: true
+      toggle: true
+    code-fold: true
+---
+
+```{r}
+#| output: false
+
+source("global.R")
+```
+
+Exploring factors
+
+The penguins data has three factor variables:
+
+
+```{r}
+penguins %>%
+  dplyr::select(where(is.factor)) %>% 
+  glimpse()
+```
+
+```{r}
+penguins %>%
+  count(species, island, .drop = FALSE)
+```
+
+```{r}
+ggplot(penguins, aes(x = island, fill = species)) +
+  geom_bar(alpha = 0.8) +
+  scale_fill_manual(values = c("darkorange","purple","cyan4"), 
+                    guide = FALSE) +
+  theme_minimal() +
+  facet_wrap(~species, ncol = 1) +
+  coord_flip()
+```
+
+```{r}
+penguins %>%
+  count(species, sex, .drop = FALSE)
+```
+
+```{r}
+ggplot(penguins, aes(x = sex, fill = species)) +
+  geom_bar(alpha = 0.8) +
+  scale_fill_manual(values = c("darkorange","purple","cyan4"), 
+                    guide = FALSE) +
+  theme_minimal() +
+  facet_wrap(~species, ncol = 1) +
+  coord_flip()
+```
+
